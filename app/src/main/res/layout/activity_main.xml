@@ -28,11 +28,23 @@
 
     <Button
         android:id="@+id/check"
+        android:layout_width="142dp"
+        android:layout_height="84dp"
+        android:text="Check Disease"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="282dp" />
+
+    <WebView
+        android:id="@+id/uploadedWebView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check Disease"
-        tools:ignore="MissingConstraints"
-        android:visibility="invisible"/>
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="172dp"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
