@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Log.i("Info", "Button Pressed");
-                    UploadImageToServer uploadImageToServer = new UploadImageToServer("http://192.168.43.176/androidKK_Projects/uploadImage.php",b);
+                    UploadImageToServer uploadImageToServer = new UploadImageToServer("http://20.206.102.151:8080/aioracle",b);
                     uploadImageToServer.execute();
                     //https://androidkk.com/index.php/2021/02/28/how-to-easily-upload-image-to-the-server-programmatically-in-android/
                 }
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             if(!result.equals("0")){
 
                 WebView uploadedImageView = (WebView) findViewById(R.id.uploadedWebView);
-                uploadedImageView.loadUrl("http://192.168.43.176/androidKK_Projects/"+result);
+                uploadedImageView.loadData(result, "text/json", "UTF-8");;
                 Toast.makeText(MainActivity.this, "Image is uploaded", Toast.LENGTH_SHORT).show();
 
             }else{

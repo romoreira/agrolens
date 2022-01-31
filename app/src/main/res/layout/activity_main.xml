@@ -33,18 +33,19 @@
         android:text="Check Disease"
         android:visibility="invisible"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="282dp" />
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="271dp" />
 
     <WebView
         android:id="@+id/uploadedWebView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="232dp"
+        android:layout_height="151dp"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="172dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_margin="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/check"
+        app:layout_constraintTop_toBottomOf="@+id/myImage"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="77dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

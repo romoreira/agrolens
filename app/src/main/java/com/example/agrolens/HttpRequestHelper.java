@@ -21,6 +21,7 @@ public class HttpRequestHelper {
     private final String twoHyphens = "--";
 
     public HttpRequestHelper(String requestURL){
+        Log.i("Info", "HttpRequestHelper tring to stablish connection. Request: "+request);
         try {
             // creates a unique boundary based on time stamp
             URL url = new URL(requestURL);
