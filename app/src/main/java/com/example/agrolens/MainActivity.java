@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.i("Info", "Button Pressed to send image"+b);
                     spinner.setVisibility(View.VISIBLE);
-                    UploadImageToServer uploadImageToServer = new UploadImageToServer("http://52.190.251.185:8080/aioracle",b);
+                    UploadImageToServer uploadImageToServer = new UploadImageToServer("http://192.168.137.2:8080/aioracle",b);
                     uploadImageToServer.execute();
                     //https://androidkk.com/index.php/2021/02/28/how-to-easily-upload-image-to-the-server-programmatically-in-android/
                 }
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 texto = (TextView) findViewById(R.id.uploadedWebView);
                 texto.setText(result);
                 WebView uploadedImageView = (WebView) findViewById(R.id.WebView2);
-                uploadedImageView.loadUrl("http://52.190.251.185:8080/aioracle"+result);
+                uploadedImageView.loadUrl("http://192.168.137.2:8080/aioracle"+result);
                 Toast.makeText(MainActivity.this, "Image is uploaded", Toast.LENGTH_SHORT).show();
 
             }else{

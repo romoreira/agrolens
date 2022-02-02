@@ -93,7 +93,7 @@
         android:layout_marginBottom="559dp"
         android:text=""
         android:textColor="@color/black"
-        android:textSize="10sp" />
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/button2"
