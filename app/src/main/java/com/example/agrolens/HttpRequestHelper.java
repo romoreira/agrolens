@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 public class HttpRequestHelper {
     private HttpURLConnection httpConn;
     private DataOutputStream request;
@@ -21,7 +22,6 @@ public class HttpRequestHelper {
     private final String twoHyphens = "--";
 
     public HttpRequestHelper(String requestURL){
-        Log.i("Info", "HttpRequestHelper tring to stablish connection. Request: "+request);
         try {
             // creates a unique boundary based on time stamp
             URL url = new URL(requestURL);
@@ -76,7 +76,6 @@ public class HttpRequestHelper {
     }
 
     public String finish() {
-        Log.i("Info", "Sending....");
         String response = "";
         try {
             request.writeBytes(this.crlf);

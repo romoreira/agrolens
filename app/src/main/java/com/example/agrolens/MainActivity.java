@@ -13,6 +13,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView myImage;
     private Button button;
     private Button check;
+    private ProgressBar spinner;
+    private TextView uploadedImageView;
+    private TextView texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
         myImage = (ImageView) findViewById(R.id.myImage);
         button = (Button) findViewById(R.id.button);
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
+        uploadedImageView = (TextView) findViewById(R.id.uploadedWebView);
+        texto = (TextView) findViewById(R.id.uploadedWebView);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +66,9 @@ public class MainActivity extends AppCompatActivity {
             check.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.i("Info", "Button Pressed");
-                    UploadImageToServer uploadImageToServer = new UploadImageToServer("http://20.206.102.151:8080/aioracle",b);
+                    Log.i("Info", "Button Pressed to send image"+b);
+                    spinner.setVisibility(View.VISIBLE);
+                    UploadImageToServer uploadImageToServer = new UploadImageToServer("http://52.190.251.185:8080/aioracle",b);
                     uploadImageToServer.execute();
                     //https://androidkk.com/index.php/2021/02/28/how-to-easily-upload-image-to-the-server-programmatically-in-android/
                 }
@@ -81,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 HttpRequestHelper httpRequestHelper = new HttpRequestHelper(requesturl);
                 httpRequestHelper.addFilePart("image_name", bitmap);
                 String response = httpRequestHelper.finish();
+                Log.i("Info", "RESPONSE: "+response);
                 return response;
             }
             return "";
@@ -90,15 +101,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Log.e("Result" , result);
-            if(!result.equals("0")){
-
-                WebView uploadedImageView = (WebView) findViewById(R.id.uploadedWebView);
-                uploadedImageView.loadData(result, "text/json", "UTF-8");;
+            Log.e("Info" , "PostExecute"+(result.length()));
+            if(!result.equals("0") && !result.equals(null) ){
+                spinner.setVisibility(View.GONE);
+                texto = (TextView) findViewById(R.id.uploadedWebView);
+                texto.setText(result);
+                WebView uploadedImageView = (WebView) findViewById(R.id.WebView2);
+                uploadedImageView.loadUrl("http://52.190.251.185:8080/aioracle"+result);
                 Toast.makeText(MainActivity.this, "Image is uploaded", Toast.LENGTH_SHORT).show();
 
             }else{
                 Log.i("Info", "Error to send");
+                texto.setText("Try Again");
                 Toast.makeText(MainActivity.this, "Image is not uploaded", Toast.LENGTH_SHORT).show();
             }
         }
