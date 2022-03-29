@@ -1,4 +1,4 @@
-# AgroLens
+# AgroLens: A low-cost and green-friendly Smart Farm Architecture to support real-time leaf disease diagnostics
 
 Andoid App
 
